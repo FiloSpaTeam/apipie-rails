@@ -14,7 +14,7 @@
   <h1>
     <%= @resource[:name] %>
     <% if @resource[:deprecated] %>
-        <code>DEPRECATED</code>
+      <code><%= t('apipie.deprecated') %></code>
     <% end %>
     <br>
     <small><%= raw @resource[:short_description] %></small>
@@ -26,12 +26,12 @@
 <% end %>
 
 <% unless @resource[:metadata].blank? %>
-  <h2>Metadata</h2>
+  <h2><%= t('apipie.metadata') %></h2>
   <%= render(:partial => "metadata", :locals => {:meta => @resource[:metadata]}) %>
 <% end %>
 
 <% unless @resource[:formats].blank? %>
-  <h2>Supported Formats</h2>
+  <h2><%= t('apipie.supported_formats') %></h2>
   <%= @resource[:formats].join(', ') %>
 <% end %>
 
@@ -57,7 +57,7 @@
             <%= api[:http_method] %> <%= api[:api_url] %>
           </a>
           <% if api[:deprecated] %>
-            <code>DEPRECATED</code>
+            <code><%= t('apipie.deprecated') %></code>
           <% end %>
           <br>
           <small><%= raw api[:short_description] %></small>
